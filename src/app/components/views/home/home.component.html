@@ -1,0 +1,106 @@
+<form class="form-portal">
+    <div class="row">
+        <div class="form-group col-9 col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend pointer-cursor" (click)="isOpenDate = !isOpenDate">
+                    <div class="input-group-text bg-white" id="btnGroupAddon">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                </div>
+                <input id="inputDate" type="text" placeholder="Rango de Fecha" class="form-control" bsDaterangepicker
+                    [bsConfig]="bsConfig" [minDate]="bsDateCurrent" [bsValue]="bsRangeValue" [isOpen]="isOpenDate"
+                    autocomplete="off" (bsValueChange)="onChangeFilterDate($event)" />
+            </div>
+        </div>
+
+        <div class="form-group col-3 col-md-6">
+            <button type="button" (click)="onOpenModalSchedule()" class="btn btn-outline-primary float-right">
+                Nuevo
+            </button>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" class="d-none d-sm-table-cell">#</th>
+                <th scope="col" class="d-none d-sm-table-cell">Campo 1</th>
+                <th scope="col" class="d-none d-sm-table-cell">Campo 2</th>
+                <th scope="col" class="d-none d-sm-table-cell">Campo 3</th>
+                <th scope="col" class="d-none d-sm-table-cell">Campo 4</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" class="d-none d-sm-table-cell">1</th>
+                <td class="d-none d-sm-table-cell">Campo 1</td>
+                <td class="d-none d-sm-table-cell">Campo 2</td>
+                <td class="d-none d-sm-table-cell">
+                    Campo 3
+                </td>
+                <td class="d-none d-sm-table-cell">Campo 4</td>
+                <td class="d-none d-sm-table-cell">
+                    <span class="pointer-cursor" tooltip="Ver más" (click)="onOpenModalSchedule()">
+                        <i class="text-primary fas fa-info fa-lg"></i>
+                    </span>
+                </td>
+
+                <td class="d-sm-none border-0">
+                    <div class="card mb-1">
+                        <div class="card-body p-2">
+                            <h5 tooltip="Ver más" class="card-title font-weight-bold text-center">
+                                dato 1
+                                <i class=""></i>
+                            </h5>
+                            <p class="card-text mb-0">
+                                <span class="text-muted text-uppercase font-weight-bold">Campo 1:</span>
+                                dato 2
+                            </p>
+                            <p class="card-text mb-0">
+                                <span class="text-muted text-uppercase font-weight-bold mr-2">Campo 2:</span>
+                                dato 3
+                            </p>
+                            <p class="card-text mb-0">
+                                <span class="text-muted text-uppercase font-weight-bold">Campo 3:</span>
+                                dato 4
+                            </p>
+                            <p class="card-text mb-0">
+                                <span class="text-muted text-uppercase font-weight-bold">Precio:</span>
+                                $6.000
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white text-right p-2">
+                            <span class="pointer-cursor" tooltip="Información" (click)="onOpenModalSchedule()">
+                                <i class="text-primary fas fa-info fa-lg"></i>
+                            </span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<div class="modal fade" bsModal #modalSchedule="bs-modal" tabindex="-1" role="dialog"
+    aria-labelledby="dialog-static-name">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-static-name" class="modal-title pull-left">Horario</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalSchedule.hide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" *ngIf="modalSchedule.isShown">
+                <form #vcSchedule autocomplete="off">
+                    <div class="form-row">
+                        colocar formularios
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
